@@ -16,7 +16,6 @@ app.use(helmet());
 
 app.use('/users', usersRoutes);
 app.use('/vendor', vendorRoutes);
-app.use('/users', usersRoutes)
 app.use("/products", productsRoutes);
 app.use("/stalls", stallsRoutes);
 
