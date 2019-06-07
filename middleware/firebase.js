@@ -4,11 +4,17 @@ const client = admin.initializeApp();
 module.exports = (req, res, next) => {
   const token = req.headers.authorization;
   if (token) {
+    console.log(token, 'token from auth')
+    console.log(req.body, 'req user from auth')
     client
       .auth()
       .verifyIdToken(token)
       .then(decodedToken => {
+        console.log(req.body, 'req user from auth')
+        console.log(decodedToken, 'decoded token from auth')
         req.user = decodedToken.uid;
+        console.log(req.user, 'req user from auth')
+        console.log(req.body, 'req user from auth')
         return next();
       })
       .catch(err => {
@@ -21,3 +27,5 @@ module.exports = (req, res, next) => {
       .json({ message: "Log in and provide token to view this content." });
   }
 };
+
+

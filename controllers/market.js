@@ -15,10 +15,16 @@ exports.getAllMarkets = async (req, res, next) => {
 exports.addMarket = async (req, res, next) => {
     try {
         const id = req.params.id;
-        console.log(id, 'id from add market')
+        console.log(req, 'req from add market')
         const marketData = req.body
         const newMarket = await market.addMarket(marketData)
-        res.status(201).json(newMarket)
+        const userData = await user.findById(id)
+        const user_type = userData.user_type
+        if (user_type !== 'market') {
+            res.status(400).json({message: `You have to be a market in order to register`})
+        } else {
+            res.status(201).json({ newMarket, user_type })
+        }
     } catch (err) {
         res.status(500).json(`error adding market`)
         console.log(err, 'error from add market')
