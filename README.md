@@ -174,6 +174,20 @@ Node/Express js
 🚫 This is an example, replace this with the actions that pertain to your backend
 
 
+*Stalls:*
+
+`getStalls()` -> Returns all stalls.
+
+`getStallsById(id)` -> Returns a stall by stall ID. 
+
+`getStallsByMarketId(market_id)` -> Returns stalls by market ID
+
+`addStallByMarketId(market_id)` -> Add stall by market ID
+
+`updateStallsByStallId(stall_id)` -> Update an stall by stall ID
+
+`removeStallsByStallId(stall_id)` -> Delete an stall by stall ID.
+
 *Orders:*
 
 `getOrders()` -> Returns all orders
