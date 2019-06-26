@@ -188,6 +188,20 @@ Node/Express js
 
 `removeStallsByStallId(stall_id)` -> Delete an stall by stall ID.
 
+*Carts:*
+
+`getCarts()` -> Returns all carts.
+
+`getCartById(id)` -> Returns a cart by regular id.  
+
+`addStallToCart(cart_id)` -> Add stall by cart ID.
+
+`checkout()` -> handle transactions. 
+
+`removeStallFromCart(cart_id)` -> Remove a stall from cart by cart ID.
+
+`clearCartByCartId(cart_id)` -> Delete all stalls from a cart by cart ID.
+
 *Orders:*
 
 `getOrders()` -> Returns all orders
