@@ -173,27 +173,23 @@ Node/Express js
 
 🚫 This is an example, replace this with the actions that pertain to your backend
 
-`getOrgs()` -> Returns all organizations
 
-`getOrg(orgId)` -> Returns a single organization by ID
+*Orders:*
 
-`addOrg(org)` -> Returns the created org
+`getOrders()` -> Returns all orders
 
-`updateOrg(orgId)` -> Update an organization by ID
+`getOrderById(order_id)` -> Returns order by order ID. 
 
-`deleteOrg(orgId)` -> Delete an organization by ID
-<br>
-<br>
-<br>
-`getUsers(orgId)` -> if no param all users
+`getOrdersByVendorId(vendor_id)` -> Returns orders by vendor ID
 
-`getUser(userId)` -> Returns a single user by user ID
+`addOrderByVendorId(vendor_id)` -> Add order by vendor ID
 
-`addUser(user object)` --> Creates a new user and returns that user. Also creates 7 availabilities defaulted to hours of operation for their organization.
+`updateOrderByOrderId(order_id)` -> Update an order by order ID
 
-`updateUser(userId, changes object)` -> Updates a single user by ID.
+`removeOrderByOrderId(order_id)` -> Delete an order by order ID.
 
-`deleteUser(userId)` -> deletes everything dependent on the user
+`removeOrdersByVendorId(vendor_id)` -> Delete all orders by vendor ID. 
+
 
 ## 3️⃣ Environment Variables
 
