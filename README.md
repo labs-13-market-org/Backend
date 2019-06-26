@@ -203,11 +203,24 @@ create a .env file that includes the following:
 
 🚫 These are just examples, replace them with the specifics for your app
     
-    *  STAGING_DB - optional development db for using functionality not available in SQLite
-    *  NODE_ENV - set to "development" until ready for "production"
-    *  JWT_SECRET - you can generate this by using a python shell and running import random''.join([random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&amp;*(-*=+)') for i in range(50)])
-    *  SENDGRID_API_KEY - this is generated in your Sendgrid account
-    *  stripe_secret - this is generated in the Stripe dashboard
+    *  DATABASE_URL - Your Postgres / mySQL database / Heroku Database URL
+    *  DATABASE_HOST - The name of the Database Host hosting your database. 
+    *  DATABASE - The name of your database.
+    *  DATABASE_USER - The name of your username for your database. 
+    *  DATABASE_PASSWORD - The password to access your database
+    *  NODE_ENV - The development environment (i.e. development, production) for your app
+    *  PORT - The localhost PORT number for local testing
+    *  apiKey - The Firebase API Key that handles OAuth Authentication for Registration/LogIn
+    *  authDomain - the Firebase Domain URL to access the Firebase URL
+    *  projectId - the Firebase Project ID specific for your project
+    *  storageBucket - the Firebase storage bucket URL to handle all image uploads.
+    *  messagingSenderId - the Messaging Sender ID for our Firebase OAuth App
+    *  appId - the App id specific to the firebase oAuth app
+    *  STRIPE_SK - the Secret Key that gives access to the Stripe app for this app.
+    *  STRIPE_CLIENT_ID - the client ID for our Stripe App
+    *  STRIPE_AUTH_URI - the Stripe Authorization URL to authorize all Stripe transactions
+    *  STRIPE_TOKEN_URI - the Stripe Token URL for users to retrieve a Stripe Token during the payment transaction of Stalls
+    *  STRIPE_PK - the Stripe Public Key for our App.
     
 ## Contributing
 
