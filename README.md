@@ -51,6 +51,43 @@ Node/Express js
 | PUT    | `/users/:userId`        | owners, supervisors |                                                    |
 | DELETE | `/users/:userId`        | owners, supervisors |                                                    |
 
+#### Orders Routes
+
+| Method | Endpoint                | Access Control      | Description                                        |
+| ------ | ----------------------- | ------------------- | -------------------------------------------------- |
+| GET    | `/orders/`             | all users           | Returns all orders.               |
+| GET    | `/orders/order_id`    |  all users           | Returns order by order ID.            |
+| GET    | `/orders/vendor/:vendor_id` | all users | Returns orders by vendor ID                    |
+| POST   | `/orders/vendor/:vendor_id` | all users       |  Add order by vendor ID |
+| PUT    | `/orders/:order_id`        | all users |   Update an order by order ID   |
+| DELETE | `/orders/:order_id`        | all users |   Delete an order by order ID.  |
+| DELETE | `/orders/vendor/:vendorId` | all users |    Delete all orders by vendor ID.  |
+
+
+
+#### Stalls Routes
+
+| Method | Endpoint                | Access Control      | Description                                        |
+| ------ | ----------------------- | ------------------- | -------------------------------------------------- |
+| GET    | `/stalls/`        | all users           | Returns all stalls.               |
+| GET    | `/stalls/market/:market_id`    | all users | Returns a stall by stall ID.              |
+| GET    | `/stalls/:id`        | all users | Returns stalls by market ID                    |
+| POST   | `/stalls/market/:market_id` | all users                | Add stall by market ID |
+| PUT    | `/stalls/:stall_id`        | all users | Update an stall by stall ID |
+| DELETE | `/stalls/:stall_id`        | all users | Delete an stall by stall ID. |
+
+#### Carts Routes
+
+| Method | Endpoint                | Access Control      | Description                                        |
+| ------ | ----------------------- | ------------------- | -------------------------------------------------- |
+| GET    | `/carts/`        | all users           | Returns all carts.               |
+| GET    | `/carts/:id`    | all users | Returns a cart by regular id.             |
+| POST    | `/carts/add-stall-to-cart/:id`        | all users | Add stall by cart ID.                    |
+| POST   | `/carts/checkout` | all users                | handle transactions.  |
+| DELETE    | `/carts/delete-stall-from-cart/:id`        | all users | Remove a stall from cart by cart ID.                                                  |
+| DELETE | `/carts/clear-cart/:cart_id`        | all users |   Delete all stalls from a cart by cart ID.  |
+
+
 # Data Model
 
 🚫This is just an example. Replace this with your data model
