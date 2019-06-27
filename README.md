@@ -1,8 +1,3 @@
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline. Feel free to add your own flare to it.
-
-🚫 The numbers 1️⃣ through 3️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
-
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric.  Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
 # API Documentation
 
@@ -20,7 +15,6 @@ To get the server running locally:
 
 ### Backend framework goes here
 
-🚫 Why did you choose this framework?
   
 Node/Express js
 - Uses Javascript to build web server.
@@ -82,15 +76,14 @@ Node/Express js
 | ------ | ----------------------- | ------------------- | -------------------------------------------------- |
 | GET    | `/carts/`        | all users           | Returns all carts.               |
 | GET    | `/carts/:id`    | all users | Returns a cart by regular id.             |
-| POST    | `/carts/add-stall-to-cart/:id`        | all users | Add stall by cart ID.                    |
+| POST    | `/carts/add-stall-to-cart/:id`        | all users | Add stall to the cart_item table by cart ID.                    |
 | POST   | `/carts/checkout` | all users                | handle transactions.  |
-| DELETE    | `/carts/delete-stall-from-cart/:id`        | all users | Remove a stall from cart by cart ID.                                                  |
+| DELETE    | `/carts/delete-stall-from-cart/:id`        | all users | Remove a stall from the cart_item table by cart ID.                                                  |
 | DELETE | `/carts/clear-cart/:cart_id`        | all users |   Delete all stalls from a cart by cart ID.  |
 
 
 # Data Model
 
-🚫This is just an example. Replace this with your data model
 
 #### USERS
 
@@ -208,8 +201,6 @@ Node/Express js
 
 ## 2️⃣ Actions
 
-🚫 This is an example, replace this with the actions that pertain to your backend
-
 
 *Stalls:*
 
@@ -231,11 +222,11 @@ Node/Express js
 
 `getCartById(id)` -> Returns a cart by regular id.  
 
-`addStallToCart(cart_id)` -> Add stall by cart ID.
+`addStallToCart(cart_id)` -> Add stall to the cart_item table by cart ID.
 
 `checkout()` -> handle transactions. 
 
-`removeStallFromCart(cart_id)` -> Remove a stall from cart by cart ID.
+`removeStallFromCart(cart_id)` -> Remove a stall from the cart_item table by cart ID.
 
 `clearCartByCartId(cart_id)` -> Delete all stalls from a cart by cart ID.
 
@@ -261,8 +252,6 @@ Node/Express js
 In order for the app to function correctly, the user must set up their own environment variables.
 
 create a .env file that includes the following:
-
-🚫 These are just examples, replace them with the specifics for your app
     
     *  DATABASE_URL - Your Postgres / mySQL database / Heroku Database URL
     *  DATABASE_HOST - The name of the Database Host hosting your database. 
