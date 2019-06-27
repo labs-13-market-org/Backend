@@ -70,8 +70,8 @@ Node/Express js
 | Method | Endpoint                | Access Control      | Description                                        |
 | ------ | ----------------------- | ------------------- | -------------------------------------------------- |
 | GET    | `/stalls/`        | all users           | Returns all stalls.               |
-| GET    | `/stalls/market/:market_id`    | all users | Returns a stall by stall ID.              |
-| GET    | `/stalls/:id`        | all users | Returns stalls by market ID                    |
+| GET    | `/stalls/market/:market_id`    | all users | Returns a stall by market ID.              |
+| GET    | `/stalls/:id`        | all users | Returns stalls by stall ID                    |
 | POST   | `/stalls/market/:market_id` | all users                | Add stall by market ID |
 | PUT    | `/stalls/:stall_id`        | all users | Update an stall by stall ID |
 | DELETE | `/stalls/:stall_id`        | all users | Delete an stall by stall ID. |
