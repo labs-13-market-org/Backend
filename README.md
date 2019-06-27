@@ -208,6 +208,22 @@ Node/Express js
 
 `deleteUser(userId)` -> deletes everything dependent on the user
 
+#### User Actions
+
+`find()` -> Returns the Firebase ID, email and user type info. of all registered users in the database
+
+`registerOrLogin(user)` -> Returns the registered or logged in user
+
+`findById(firebase_id)` -> Return the registered or logged in user by the user's firebase Id
+
+`updateUser(firebase_id, changes)` -> Update a user by Firebase Id
+
+`findByUserType(user)` -> Returns a user by user type as either 'market' user or 'vendor' user
+<br>
+<br>
+<br>
+
+
 #### Vendor Actions
 
 `getVendors()` -> Returns all vendors
