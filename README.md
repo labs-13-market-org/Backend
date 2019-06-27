@@ -42,27 +42,27 @@ Node/Express js
 
 #### User Routes
 
-| Method | Endpoint                | Access Control      | Description                                        |
-| ------ | ----------------------- | ------------------- | -------------------------------------------------- |
-| GET    | `/users/current`        | all users           | Returns info for the logged in user.               |
-| GET    | `/users/org/:userId`    | owners, supervisors | Returns all users for an organization.             |
-| GET    | `/users/:userId`        | owners, supervisors | Returns info for a single user.                    |
-| POST   | `/users/register/owner` | none                | Creates a new user as owner of a new organization. |
-| PUT    | `/users/:userId`        | owners, supervisors |                                                    |
-| DELETE | `/users/:userId`        | owners, supervisors |                                                    |
+| Method | Endpoint                | Access Control            | Description                                        |
+| ------ | ----------------------- | ------------------------- | -------------------------------------------------- |
+| GET    | `/users`                | owners, supervisors       | Returns a list of all users in the database.       |
+| GET    | `/users/:firebase_id`   | Single logged in user     | Returns all users for an organization.             |
+| POST   | `/users/register`       | none                      | Creates a new user in the app's database           |
+| GET    | `/users/login`          | Single logged in user     | Logs a user in                                     |
+| PUT    | `/users/:firebase_id`   | owners, supervisors       |                                                    |
+
 
 #### Vendor Routes
 
-| Method | Endpoint                | Access Control      | Description                                        |
-| ------ | ----------------------- | ------------------- | -------------------------------------------------- |
-| GET    | `/vendor`                            | all public users   | Returns info all vendors               |
-| GET    | `/vendor/:firebase_id`               | all public users   | Returns info. of a single vendor his/her user firebase id            |
-| GET    | `/vendor/market/:firebaseId/vendor`  | all public users   | Get one Market by Firebase Id AND all the vendors associated with that market                    |
-| GET    | `/vendor/:id/cart`                   | vendor             | Returns info for a single vendor's cart.                    |
-| POST   | `/vendor/:firebaseId`                | none               | Creates a new vendor using the user firebase id the vendor received upon registration |
-| POST   | `/vendor`                            | none               | Creates a new vendor  |
-| PUT    | `/vendor/:firebase_id`               | private vendor user| Edits the vendor profile info and regturning the edited info                                         |
-| DELETE | `/vendor/:firebase_id`               | private vendor user|  Deletes the vendor profile                                                  |
+| Method | Endpoint                             | Access Control      | Description                                                                           |
+| ------ | ------------------------------------ | ------------------- | ------------------------------------------------------------------------------------- |
+| GET    | `/vendor`                            | all public users    | Returns info all vendors                                                              |
+| GET    | `/vendor/:firebase_id`               | all public users    | Returns info. of a single vendor his/her user firebase id                             |
+| GET    | `/vendor/market/:firebaseId/vendor`  | all public users    | Get one Market by it's Firebase Id AND all the vendors associated with that market    |
+| GET    | `/vendor/:id/cart`                   | vendor              | Returns info for a single vendor's cart.                                              |
+| POST   | `/vendor/:firebaseId`                | none                | Creates a new vendor using the user firebase id the vendor received upon registration |
+| POST   | `/vendor`                            | none                | Creates a new vendor                                                                  |
+| PUT    | `/vendor/:firebase_id`               | private vendor user | Edits the vendor profile info and regturning the edited info                          |
+| DELETE | `/vendor/:firebase_id`               | private vendor user |  Deletes the vendor profile                                                           |
 
 # Data Model
 
