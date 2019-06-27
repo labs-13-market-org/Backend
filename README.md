@@ -1,8 +1,3 @@
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline. Feel free to add your own flare to it.
-
-🚫 The numbers 1️⃣ through 3️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
-
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric.  Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
 # API Documentation
 
@@ -20,7 +15,6 @@ To get the server running locally:
 
 ### Backend framework goes here
 
-🚫 Why did you choose this framework?
   
 Node/Express js
 - Uses Javascript to build web server.
@@ -51,9 +45,45 @@ Node/Express js
 | PUT    | `/users/:userId`        | owners, supervisors |                                                    |
 | DELETE | `/users/:userId`        | owners, supervisors |                                                    |
 
+#### Orders Routes
+
+| Method | Endpoint                | Access Control      | Description                                        |
+| ------ | ----------------------- | ------------------- | -------------------------------------------------- |
+| GET    | `/orders/`             | all users           | Returns all orders.               |
+| GET    | `/orders/order_id`    |  all users           | Returns order by order ID.            |
+| GET    | `/orders/vendor/:vendor_id` | all users | Returns orders by vendor ID                    |
+| POST   | `/orders/vendor/:vendor_id` | all users       |  Add order by vendor ID |
+| PUT    | `/orders/:order_id`        | all users |   Update an order by order ID   |
+| DELETE | `/orders/:order_id`        | all users |   Delete an order by order ID.  |
+| DELETE | `/orders/vendor/:vendorId` | all users |    Delete all orders by vendor ID.  |
+
+
+
+#### Stalls Routes
+
+| Method | Endpoint                | Access Control      | Description                                        |
+| ------ | ----------------------- | ------------------- | -------------------------------------------------- |
+| GET    | `/stalls/`        | all users           | Returns all stalls.               |
+| GET    | `/stalls/market/:market_id`    | all users | Returns a stall by market ID.              |
+| GET    | `/stalls/:id`        | all users | Returns stalls by stall ID                    |
+| POST   | `/stalls/market/:market_id` | all users                | Add stall by market ID |
+| PUT    | `/stalls/:stall_id`        | all users | Update an stall by stall ID |
+| DELETE | `/stalls/:stall_id`        | all users | Delete an stall by stall ID. |
+
+#### Carts Routes
+
+| Method | Endpoint                | Access Control      | Description                                        |
+| ------ | ----------------------- | ------------------- | -------------------------------------------------- |
+| GET    | `/carts/`        | all users           | Returns all carts.               |
+| GET    | `/carts/:id`    | all users | Returns a cart by regular id.             |
+| POST    | `/carts/add-stall-to-cart/:id`        | all users | Add stall to the cart_item table by cart ID.                    |
+| POST   | `/carts/checkout` | all users                | handle transactions.  |
+| DELETE    | `/carts/delete-stall-from-cart/:id`        | all users | Remove a stall from the cart_item table by cart ID.                                                  |
+| DELETE | `/carts/clear-cart/:cart_id`        | all users |   Delete all stalls from a cart by cart ID.  |
+
+
 # Data Model
 
-🚫This is just an example. Replace this with your data model
 
 #### USERS
 
@@ -171,43 +201,76 @@ Node/Express js
 
 ## 2️⃣ Actions
 
-🚫 This is an example, replace this with the actions that pertain to your backend
 
-`getOrgs()` -> Returns all organizations
+*Stalls:*
 
-`getOrg(orgId)` -> Returns a single organization by ID
+`getStalls()` -> Returns all stalls.
 
-`addOrg(org)` -> Returns the created org
+`getStallsById(id)` -> Returns a stall by stall ID. 
 
-`updateOrg(orgId)` -> Update an organization by ID
+`getStallsByMarketId(market_id)` -> Returns stalls by market ID
 
-`deleteOrg(orgId)` -> Delete an organization by ID
-<br>
-<br>
-<br>
-`getUsers(orgId)` -> if no param all users
+`addStallByMarketId(market_id)` -> Add stall by market ID
 
-`getUser(userId)` -> Returns a single user by user ID
+`updateStallsByStallId(stall_id)` -> Update an stall by stall ID
 
-`addUser(user object)` --> Creates a new user and returns that user. Also creates 7 availabilities defaulted to hours of operation for their organization.
+`removeStallsByStallId(stall_id)` -> Delete an stall by stall ID.
 
-`updateUser(userId, changes object)` -> Updates a single user by ID.
+*Carts:*
 
-`deleteUser(userId)` -> deletes everything dependent on the user
+`getCarts()` -> Returns all carts.
+
+`getCartById(id)` -> Returns a cart by regular id.  
+
+`addStallToCart(cart_id)` -> Add stall to the cart_item table by cart ID.
+
+`checkout()` -> handle transactions. 
+
+`removeStallFromCart(cart_id)` -> Remove a stall from the cart_item table by cart ID.
+
+`clearCartByCartId(cart_id)` -> Delete all stalls from a cart by cart ID.
+
+*Orders:*
+
+`getOrders()` -> Returns all orders
+
+`getOrderById(order_id)` -> Returns order by order ID. 
+
+`getOrdersByVendorId(vendor_id)` -> Returns orders by vendor ID
+
+`addOrderByVendorId(vendor_id)` -> Add order by vendor ID
+
+`updateOrderByOrderId(order_id)` -> Update an order by order ID
+
+`removeOrderByOrderId(order_id)` -> Delete an order by order ID.
+
+`removeOrdersByVendorId(vendor_id)` -> Delete all orders by vendor ID. 
+
 
 ## 3️⃣ Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables.
 
 create a .env file that includes the following:
-
-🚫 These are just examples, replace them with the specifics for your app
     
-    *  STAGING_DB - optional development db for using functionality not available in SQLite
-    *  NODE_ENV - set to "development" until ready for "production"
-    *  JWT_SECRET - you can generate this by using a python shell and running import random''.join([random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&amp;*(-*=+)') for i in range(50)])
-    *  SENDGRID_API_KEY - this is generated in your Sendgrid account
-    *  stripe_secret - this is generated in the Stripe dashboard
+    *  DATABASE_URL - Your Postgres / mySQL database / Heroku Database URL
+    *  DATABASE_HOST - The name of the Database Host hosting your database. 
+    *  DATABASE - The name of your database.
+    *  DATABASE_USER - The name of your username for your database. 
+    *  DATABASE_PASSWORD - The password to access your database
+    *  NODE_ENV - The development environment (i.e. development, production) for your app
+    *  PORT - The localhost PORT number for local testing
+    *  apiKey - The Firebase API Key that handles OAuth Authentication for Registration/LogIn
+    *  authDomain - the Firebase Domain URL to access the Firebase URL
+    *  projectId - the Firebase Project ID specific for your project
+    *  storageBucket - the Firebase storage bucket URL to handle all image uploads.
+    *  messagingSenderId - the Messaging Sender ID for our Firebase OAuth App
+    *  appId - the App id specific to the firebase oAuth app
+    *  STRIPE_SK - the Secret Key that gives access to the Stripe app for this app.
+    *  STRIPE_CLIENT_ID - the client ID for our Stripe App
+    *  STRIPE_AUTH_URI - the Stripe Authorization URL to authorize all Stripe transactions
+    *  STRIPE_TOKEN_URI - the Stripe Token URL for users to retrieve a Stripe Token during the payment transaction of Stalls
+    *  STRIPE_PK - the Stripe Public Key for our App.
     
 ## Contributing
 
