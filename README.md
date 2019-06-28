@@ -1,6 +1,4 @@
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline. Feel free to add your own flare to it.
 
-🚫 The numbers 1️⃣ through 3️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
 
 🚫 Each student has a required minimum number of meaningful PRs each week per the rubric.  Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
@@ -19,21 +17,17 @@ To get the server running locally:
 - **yarn test** to start server using testing environment
 
 ### Backend framework goes here
-
-🚫 Why did you choose this framework?
   
-Node/Express js
+#### _Node/Express js_
 - Uses Javascript to build web server.
 - light-weight web application framework to help organize web application into an MVC architecture
 - Express makes building REST API simpler
 
-PostgreSQL
+#### _PostgreSQL_
 - Powerful, open source object-relational database system that uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads.
 
 
 ## 2️⃣ Endpoints
-
-🚫This is a placeholder, replace the endpoints, access controll, and descriptioin to match your project
 
 #### Organization Routes
 
@@ -48,7 +42,7 @@ PostgreSQL
 | Method | Endpoint                | Access Control            | Description                                        |
 | ------ | ----------------------- | ------------------------- | -------------------------------------------------- |
 | GET    | `/users`                | owners, supervisors       | Returns a list of all users in the database.       |
-| GET    | `/users/:firebase_id`   | Single logged in user     | Returns all users for an organization.             |
+| GET    | `/users/:firebase_id`   | Single logged in user     | Returns a single user by Firebase Id.              |
 | POST   | `/users/register`       | none                      | Creates a new user in the app's database           |
 | GET    | `/users/login`          | Single logged in user     | Logs a user in                                     |
 | PUT    | `/users/:firebase_id`   | owners, supervisors       |                                                    |
@@ -58,8 +52,8 @@ PostgreSQL
 
 | Method | Endpoint                             | Access Control      | Description                                                                           |
 | ------ | ------------------------------------ | ------------------- | ------------------------------------------------------------------------------------- |
-| GET    | `/vendor`                            | all public users    | Returns info all vendors                                                              |
-| GET    | `/vendor/:firebase_id`               | all public users    | Returns info. of a single vendor his/her user firebase id                             |
+| GET    | `/vendor`                            | all public users    | Returns info of all vendors                                                           |
+| GET    | `/vendor/:firebase_id`               | all public users    | Returns info of a single vendor by user firebase id                                   |
 | GET    | `/vendor/market/:firebaseId/vendor`  | all public users    | Get one Market by it's Firebase Id AND all the vendors associated with that market    |
 | GET    | `/vendor/:id/cart`                   | vendor              | Returns info for a single vendor's cart.                                              |
 | POST   | `/vendor/:firebaseId`                | none                | Creates a new vendor using the user firebase id the vendor received upon registration |
@@ -68,8 +62,6 @@ PostgreSQL
 | DELETE | `/vendor/:firebase_id`               | private vendor user |  Deletes the vendor profile                                                           |
 
 # Data Model
-
-🚫This is just an example. Replace this with your data model
 
 #### USERS
 
