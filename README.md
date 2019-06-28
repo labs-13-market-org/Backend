@@ -1,6 +1,4 @@
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline. Feel free to add your own flare to it.
 
-🚫 The numbers 1️⃣ through 3️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
 
 🚫 Each student has a required minimum number of meaningful PRs each week per the rubric.  Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
@@ -19,18 +17,17 @@ To get the server running locally:
 - **yarn test** to start server using testing environment
 
 ### Backend framework goes here
-
-🚫 Why did you choose this framework?
   
-Node/Express js
+#### _Node/Express js_
 - Uses Javascript to build web server.
 - light-weight web application framework to help organize web application into an MVC architecture
 - Express makes building REST API simpler
 
+#### _PostgreSQL_
+- Powerful, open source object-relational database system that uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads.
+
 
 ## 2️⃣ Endpoints
-
-🚫This is a placeholder, replace the endpoints, access controll, and descriptioin to match your project
 
 #### Organization Routes
 
@@ -42,18 +39,29 @@ Node/Express js
 
 #### User Routes
 
-| Method | Endpoint                | Access Control      | Description                                        |
-| ------ | ----------------------- | ------------------- | -------------------------------------------------- |
-| GET    | `/users/current`        | all users           | Returns info for the logged in user.               |
-| GET    | `/users/org/:userId`    | owners, supervisors | Returns all users for an organization.             |
-| GET    | `/users/:userId`        | owners, supervisors | Returns info for a single user.                    |
-| POST   | `/users/register/owner` | none                | Creates a new user as owner of a new organization. |
-| PUT    | `/users/:userId`        | owners, supervisors |                                                    |
-| DELETE | `/users/:userId`        | owners, supervisors |                                                    |
+| Method | Endpoint                | Access Control            | Description                                        |
+| ------ | ----------------------- | ------------------------- | -------------------------------------------------- |
+| GET    | `/users`                | owners, supervisors       | Returns a list of all users in the database.       |
+| GET    | `/users/:firebase_id`   | Single logged in user     | Returns a single user by Firebase Id.              |
+| POST   | `/users/register`       | none                      | Creates a new user in the app's database           |
+| GET    | `/users/login`          | Single logged in user     | Logs a user in                                     |
+| PUT    | `/users/:firebase_id`   | owners, supervisors       |                                                    |
+
+
+#### Vendor Routes
+
+| Method | Endpoint                             | Access Control      | Description                                                                           |
+| ------ | ------------------------------------ | ------------------- | ------------------------------------------------------------------------------------- |
+| GET    | `/vendor`                            | all public users    | Returns info of all vendors                                                           |
+| GET    | `/vendor/:firebase_id`               | all public users    | Returns info of a single vendor by user firebase id                                   |
+| GET    | `/vendor/market/:firebaseId/vendor`  | all public users    | Get one Market by it's Firebase Id AND all the vendors associated with that market    |
+| GET    | `/vendor/:id/cart`                   | vendor              | Returns info for a single vendor's cart.                                              |
+| POST   | `/vendor/:firebaseId`                | none                | Creates a new vendor using the user firebase id the vendor received upon registration |
+| POST   | `/vendor`                            | none                | Creates a new vendor                                                                  |
+| PUT    | `/vendor/:firebase_id`               | private vendor user | Edits the vendor profile info and regturning the edited info                          |
+| DELETE | `/vendor/:firebase_id`               | private vendor user |  Deletes the vendor profile                                                           |
 
 # Data Model
-
-🚫This is just an example. Replace this with your data model
 
 #### USERS
 
@@ -195,6 +203,45 @@ Node/Express js
 
 `deleteUser(userId)` -> deletes everything dependent on the user
 
+#### User Actions
+
+`find()` -> Returns the Firebase ID, email and user type info. of all registered users in the database
+
+`registerOrLogin(user)` -> Returns the registered or logged in user
+
+`findById(firebase_id)` -> Return the registered or logged in user by the user's firebase Id
+
+`updateUser(firebase_id, changes)` -> Update a user by Firebase Id
+
+`findByUserType(user)` -> Returns a user by user type as either 'market' user or 'vendor' user
+<br>
+<br>
+<br>
+
+
+#### Vendor Actions
+
+`getVendors()` -> Returns all vendors
+
+`getVendorById(id)` -> Returns a single vendor by ID generated by Postgres database
+
+`getVendorByfirebaseId(firebase_id)` -> Returns a single vendor by firebase Id generated by Firebase authentication
+
+`getVendorByMarketFirebaseId(firebaseId)` -> Returns a list of vendors associated with a market using that market user's Firebase ID 
+
+`findVendorBy(filter)` -> Returns a single vendor by a factor specified by the filter parameter
+
+`addVendor(vendor)` -> Returns the created vendor
+
+`addVendorByFirebaseId(vendor, firebaseId)` -> Returns the created vendor that was created using the firebase Id received upon registration
+
+`updateVendor(firebase_id, changes)` -> Update a vendor by Firebase ID
+
+`deleteVendor(id)` -> Delete a vendor by Firebase ID
+<br>
+<br>
+<br>
+
 ## 3️⃣ Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables.
@@ -248,7 +295,3 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 ## Documentation
 
 See [Frontend Documentation](https://github.com/labs-13-market-org/Front-End/blob/master/README.md) for details on the fronend of our project.
-<<<<<<< HEAD
-=======
-
->>>>>>> f1431cfe2ab1a06178c9d6dc404c0653fd097a3b
