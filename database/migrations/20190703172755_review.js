@@ -12,7 +12,7 @@ exports.up = function(knex, Promise) {
       .notNullable()
       .references('firebase_id')
       .inTable('users')
-      .unique()
+      // .unique()
         
   })
 };

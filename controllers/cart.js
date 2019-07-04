@@ -32,27 +32,6 @@ exports.getCarts = async (req, res, next) => {
     }
 }
 
-// exports.getCartById = async (req, res, next) => {
-//     try {
-//         const id = req.params.id
-//         // const cartData = await Cart.getCartById(id)
-//         const cartItem = await Cart.getCartItems(id)
-//         // console.log(cartData, 'cart item')
-//         let updatedTotal = 0
-//         const price = cartItem.forEach(element => {
-//             return updatedTotal += element.price 
-//         });
-//         const roundedTotal = Math.ceil(updatedTotal * 100) / 100
-//         let total = roundedTotal
-//         console.log(total, 'total')
-//         res.status(200).json({cartItem, total})
-//     } catch (err) {
-//         res.status(500).json(err)
-//         console.log(err, 'error from get cart')
-//     }
-// }
-
-//test
 
 exports.getCartById = async (req, res, next) => {
     try {
@@ -79,37 +58,10 @@ exports.addStallToCart = async (req, res, next) => {
         // console.log(req, "req");
         console.log(req.body, 'stall fron at to cart')
         const cartItems = await Cart.getCartItems(cart_id);
-        // const cartItems = [...cartItems, stall]
-        // Object.keys(cartItems.map((item,i) => {
-        //     console.log(`cart market:`, cartItems[i].market_id);
-        //     console.log("checking market id", cartItems[i].market_id === cartItems[i+1].market_id);
-        // }))
-        // // console.log("cart Items:", cartItems.market_id);
-        // console.log("cart Items length", cartItems.length);
-
         if(cartItems.length == 0) {
                 const addedStall = await Cart.addStallToCart(stalls_id, cart_id)
                 console.log("Sucessful adding of stall: one item in cart");
                 res.status(201).json(addedStall)
-
-                
-
-        
-            // else if (cartItems.length == 1){
-
-            //     if(cartItems[0].market_id != req.body.market_id) {
-            //         console.log("There's one item in the cart with the same market id");
-            //         res.status(404).json(err => { console.log(err.message)})
-            //     }
-            //     else {
-            //         const addedStall = await Cart.addStallToCart(stalls_id, cart_id)
-            //         console.log("Sucessful adding of stall: two items in cart");
-            //         res.status(201).json(addedStall)
-                    
-
-
-            //     }
-            // }
         }
         else if (cartItems.length >= 1) {
 
@@ -147,90 +99,7 @@ exports.addStallToCart = async (req, res, next) => {
     }
 }
 
-// exports.checkout = async (req, res, next) => {
-//     try {
-        //send back from the front end the cart total and the token from stripe.js element
-        // const { token, amt, stripe_account } = req.body
-        // console.log(token, 'token')
-        //create a customer 
-        // const customer = await stripe.customers.create({
-        //     email: token.email,
-        //     source: token.id
-        // })
 
-        // await stripe.charges.create(
-        //             {
-        //               amount: amt * 100,
-        //               currency: "usd",
-        //               customer: customer.id,
-        //               receipt_email: token.email,
-        //               description: `Purchased stalls`,
-        //               application_fee_amount: 250
-        //             },
-        //             {
-        //             stripe_account: stripe_account
-        //             }
-        //           )
-
-        //           console.log('Charge')
-//         "amt": 10,
-// "stripe_account": "acct_1EkaDZFQYZyXJBpt"
-        // if (customer) {
-        //     const charge = await stripe.charges.create(
-        //         {
-        //           amount: amt * 100,
-        //           currency: "usd",
-        //           customer: customer.id,
-        //           receipt_email: token.email,
-        //           description: `Purchased stalls`,
-        //           application_fee_amount: 250
-        //         },
-        //         {
-        //         stripe_account: stripe_account
-        //         }
-        //       );
-    
-        //       console.log("Charge:", {charge});
-        // }
-        
-          
-        // .then(customer => {
-            
-        //     console.log(customer, 'stripe cutomer data')
-        //     const charge = stripe.charges.create({
-        //         amount: amt * 100,
-        //         currency: 'usd',
-        //         application_fee_amount: 250,
-        //         customer: customer.id
-        //     },
-        //         {
-        //             stripe_account: stripe_account
-        //         })
-        //         console.log(charge, 'Charge completed')
-        // })
-      
-        // res.status(200).json(customer)
-
-        // stripe.charges.create({
-        //     amount: amount * 100,
-        //     currency: "usd",
-        //     source: token,
-        //     application_fee_amount: 150,
-        //   }, {
-        //     stripe_account: stripe_account,
-        //   }).then(function(charge) {
-        //     try {
-        //       res.status(200).json(charge)
-        //     } catch (err) {
-        //       console.log(err)
-        //     }
-         
-        //   });
-//     } catch (err) {
-//         res.status(500).json(err)
-//         console.log('error from checkout', err)
-//     }
-// }
 
 exports.checkout = async (req, res, next) => {
     try {
@@ -258,7 +127,8 @@ exports.checkout = async (req, res, next) => {
         res.status(500).json(err)
         console.log('error from pay', err)
     }
-}
+};
+
 exports.removeStallFromCart = async (req, res, next) => {
     try{
         const cart_id = req.params.id;

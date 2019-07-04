@@ -1,5 +1,6 @@
 const Market = require("../models/market");
 const user = require("../models/users");
+const Review = require('../models/review');
 
 exports.getAllMarkets = async (req, res, next) => {
   try {
@@ -58,7 +59,9 @@ exports.getMarketById = async (req, res, next) => {
     if (firebase_id) {
       const marketinfo = await Market.findByMarketFirebaseID(firebase_id);
       console.log(marketinfo);
-      res.status(200).json(marketinfo);
+      const reviewData = await Review.getReviewById(firebase_id)
+      console.log('review data', reviewData)
+      res.status(200).json({marketinfo, reviewData});
     } else {
       res.status(400).json({ message: `No Market by that id found` });
     }
@@ -118,3 +121,17 @@ exports.editMarket = async (req, res, next) => {
     res.status(500).json({ message: `Error updating Market: ${error}` });
   }
 };
+
+exports.addReview = async (req, res, next) => {
+  try {
+    const user_id = req.params.id
+    console.log(req.params, 'params')
+    const review = req.body
+    const reviewData = await Review.addReview(review, user_id)
+    console.log('review data', reviewData)
+    res.status(201).json(reviewData)
+  } catch (err) {
+    res.status(500).json({message: `Unable to post review`})
+    console.log(err, 'error from post review')
+  }
+}
