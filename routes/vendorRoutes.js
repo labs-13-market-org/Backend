@@ -18,10 +18,12 @@ vendorRouter.get('/market/:firebaseId/vendor', vendorController.getVendorByMarke
 
 //Get Vendor Cart
 vendorRouter.get('/:id/cart', cartController.getVendorCart);
-vendorRouter.post('/:firebaseId', isAuthenticated, vendorController.addVendorByFirebaseId);
+vendorRouter.post('/:firebaseId',  vendorController.addVendorByFirebaseId);
 vendorRouter.post('/', isAuthenticated, vendorController.addVendor);
 vendorRouter.put('/:firebase_id', isAuthenticated, vendorController.updateVendor);
 vendorRouter.delete('/:firebase_id', isAuthenticated, vendorController.deleteVendor);
+vendorRouter.post('/:id/add-review', vendorController.addReview);
+
 
 
 module.exports = vendorRouter;

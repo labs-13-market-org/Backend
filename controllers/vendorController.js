@@ -2,6 +2,7 @@ const Vendor = require("../models/vendor");
 const Market = require("../models/market");
 const Cart = require('../models/cart');
 const Product = require('../models/product');
+const Review = require('../models/review');
 const db = require("../database/dbconfig");
 
 exports.getVendors = async (req, res, next) => {
@@ -39,9 +40,10 @@ exports.getVendorByFirebaseId = async (req, res) => {
     // console.log(firebase_id, 'vendor id')
     if (firebase_id) {
       const vendor = await Vendor.getVendorByfirebaseId(firebase_id);
-      const vendorCart = await Cart.getCartById(firebase_id)
+      const vendorCart = await Cart.getCartById(firebase_id);
+      const reviewData = await Review.getReviewById(firebase_id)
       console.log(vendorCart, 'vendor by id')
-      res.status(200).json({...vendor, vendorCart});
+      res.status(200).json({...vendor, vendorCart, reviewData});
       // res.status(200).json(vendor);
     } else {
       res.status(400).json({ message: "No Vendor with that firebase Id" });
@@ -55,28 +57,7 @@ exports.getVendorByFirebaseId = async (req, res) => {
   }
 };
 
-//testing add vendor
-// exports.addVendor = async (req, res) => {
-//   try {
-//     const id = req.params.id
-//     const newVendor = req.body;
-//     // console.log(newVendor);
-//     if (newVendor) {
-//       const vendor = await Vendor.addVendor(newVendor, id);
-//       const cart = await Cart.addCart(id)
-//       console.log(cart)
-//       res.status(200).json({vendor});
-//     } else {
-//       res.status(400).json({ message: "Must enter all input fields" });
-//     }
-//   } catch (error) {
-//     res.status(500).json({
-//       error: `There was an error while adding vendor to the database: ${error}`,
-     
-//     });
-//     console.log(error, 'add vendor error')
-//   }
-// };
+
 
 exports.addVendor = async (req, res) => {
   try {
@@ -209,3 +190,17 @@ exports.addVendorByFirebaseId = async (req, res) => {
     console.log(err);
   }
 };
+
+exports.addReview = async (req, res, next) => {
+  try {
+    const user_id = req.params.id
+    console.log(req.params, 'params')
+    const review = req.body
+    const reviewData = await Review.addReview(review, user_id)
+    console.log('review data', reviewData)
+    res.status(201).json(reviewData)
+  } catch (err) {
+    res.status(500).json({message: `Unable to post review`})
+    console.log(err, 'error from post review')
+  }
+}

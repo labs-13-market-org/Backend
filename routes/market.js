@@ -10,6 +10,6 @@ router.get('/:id', marketController.getMarketById);
 router.post('/:firebaseId/add-market', marketController.addMarketByFirebaseId);
 router.put('/:id', marketController.editMarket);
 router.delete('/:id', marketController.deleteMarket);
-router.post('/', marketController.addMarket);
+router.post('/:id/add-review', marketController.addReview);
 
 module.exports = router;
